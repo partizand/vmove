@@ -1,0 +1,8 @@
+<RCC>
+    <qresource prefix="/buttons">
+        <file>toleft.gif</file>
+        <file>toboth.gif</file>
+        <file>refresh2.gif</file>
+        <file>toright.gif</file>
+    </qresource>
+</RCC>
