@@ -2,7 +2,7 @@
 #define MOVEBLOCK_H
 
 #include <QString>
-#include <QList>
+//#include <QList>
 #include <QStringList>
 
 //! Запись одного блока перемещения

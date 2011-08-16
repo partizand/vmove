@@ -47,7 +47,7 @@ void MoveBlock::refreshSum()
     }
 
 }
-
+/*
 QString MoveBlock::GetSumFile(const QString &filename)
 {
   QDomDocument domDoc;
@@ -71,3 +71,4 @@ QString MoveBlock::GetSumFile(const QString &filename)
   return strSum;
 }
 
+*/
