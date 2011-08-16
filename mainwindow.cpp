@@ -121,29 +121,33 @@ void MainWindow::refresh()
     for (int i=0;i<mover.count;i++)
     {
         leftLists[i]->clear();
-        leftLists[i]->addItems(mover.moveBlocks[i]->sourceFiles);
+        leftLists[i]->addItems(mover.moveBlocks[i]->msourceDir.displayNames);
         rightLists[i]->clear();
-        rightLists[i]->addItems(mover.moveBlocks[i]->destFiles);
+        rightLists[i]->addItems(mover.moveBlocks[i]->mdestDir.displayNames);
     }
 }
 //! Перемещение выбранных файлов по индексу
 void MainWindow::moveSelected(int index,MoveBlock::MoveDirection mDirect /*=Mover::ToRigth*/)
 {
-    QList<QListWidgetItem *> selItems;
+    //QList<QListWidgetItem *> selItems;
+    QListWidget *listWidget;
     switch (mDirect)
         {
         case MoveBlock::ToRight:
-            selItems=leftLists[index]->selectedItems();
+            listWidget=leftLists[index];
             break;
         case MoveBlock::ToLeft:
-            selItems=rightLists[index]->selectedItems();
+            listWidget=rightLists[index];
             break;
         default:
             return;
         }
-    for (int j=0;j<selItems.count();j++)
+    for (int j=0;j<listWidget->count();j++)
     {
-        mover.move(index,selItems[j]->text(),mDirect);
+        if (listWidget->item(j)->isSelected())
+        {
+        mover.move(index,j,mDirect);
+        }
     }
 }
 //! Перемещение всех файлов по индексу
@@ -154,13 +158,13 @@ void MainWindow::moveAll(int index,MoveBlock::MoveDirection mDirect /*=Mover::To
         case MoveBlock::ToRight:
                     for (int j=0;j<leftLists[index]->count();j++)
                         {
-                        mover.move(index,leftLists[index]->item(j)->text(),mDirect);
+                        mover.move(index,j,mDirect);
                         }
         break;
         case MoveBlock::ToLeft:
                     for (int j=0;j<rightLists[index]->count();j++)
                         {
-                        mover.move(index,rightLists[index]->item(j)->text(),mDirect);
+                        mover.move(index,j,mDirect);
                         }
                     break;
         }

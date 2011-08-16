@@ -5,6 +5,8 @@
 //#include <QList>
 #include <QStringList>
 
+#include "movedir.h"
+
 //! Запись одного блока перемещения
 
 class MoveBlock
@@ -12,33 +14,26 @@ class MoveBlock
 public:
     //! Направление перемещения
     enum MoveDirection {ToLeft,ToRight,ToBoth};
+  MoveBlock(const QString &nameblock,const MoveDir &mSourceDir,const MoveDir &mDestDir,MoveDirection direct);
+
     MoveBlock(const QString &nameblock,const QString &sourcedir,const QString &destdir,
               const QString &sourcemask,const QString &destmask,
               MoveDirection direct);
 
     //! Имя блока
     QString nameBlock;
-    //! Каталог источник (слева)
-    QString sourceDir;
-    //! Каталог приемник (справа)
-    QString destDir;
-    //! Маска файлов источника
-    QString sourceMask;
-    //! Маска файлов приемника
-    QString destMask;
+    //! Источник (слева)
+    MoveDir msourceDir;
+
+
+    //! Приемник (справа)
+    MoveDir mdestDir;
+
     //! Допустимые направления перемещения
     MoveDirection direction;
-    //! Список файлов в каталоге источнике (слева)
-    QStringList sourceFiles;
-    //! Список файлов в каталоге приемнике (справа)
-    QStringList destFiles;
     //! Перечитать содержимое директорий
     void refresh ();
-private:
-    //! Добавить к названиям файлов, сумму в скобках
-    void refreshSum();
-    //! Получить сумму файла
-    QString GetSumFile(const QString &filename);
+
 };
 
 #endif // MOVEBLOCK_H

@@ -6,6 +6,7 @@
 #include <QMessageBox>
 
 
+
 Mover::Mover()
 
 {
@@ -51,6 +52,9 @@ Mover::Mover()
 
         if (source=="") break;
         //count=i+1;
+
+
+
         moveBlocks.append(new MoveBlock(nameb,source,dest,sourcemask,destmask,direct));
         i++;
     }
@@ -74,18 +78,22 @@ void Mover::refresh()
 
 
 }
-void Mover::move(int index,const QString &fileName,MoveBlock::MoveDirection movDirect/*=ToRigth*/)
+// Перемещение файла
+
+void Mover::move(int indexBlock,int indexFile,MoveBlock::MoveDirection movDirect/*=MoveBlock::ToRight*/)
 {
-    QString sfullFileName,dfullFileName;
+    QString sfullFileName,dfullFileName,fileName;
     switch (movDirect)
     {
     case MoveBlock::ToRight:
-        sfullFileName=moveBlocks[index]->sourceDir+"/"+fileName;
-        dfullFileName=moveBlocks[index]->destDir+"/"+fileName;
+        fileName=moveBlocks[indexBlock]->msourceDir.fileNames[indexFile];
+        sfullFileName=moveBlocks[indexBlock]->msourceDir.mDir+"/"+fileName;
+        dfullFileName=moveBlocks[indexBlock]->mdestDir.mDir+"/"+fileName;
         break;
     case MoveBlock::ToLeft:
-        sfullFileName=moveBlocks[index]->destDir+"/"+fileName;
-        dfullFileName=moveBlocks[index]->sourceDir+"/"+fileName;
+        fileName=moveBlocks[indexBlock]->mdestDir.fileNames[indexFile];
+        sfullFileName=moveBlocks[indexBlock]->mdestDir.mDir+"/"+fileName;
+        dfullFileName=moveBlocks[indexBlock]->msourceDir.mDir+"/"+fileName;
     }
     QFile sourfile(sfullFileName);
     if (!sourfile.exists()) return; // Файла нет
@@ -108,6 +116,44 @@ void Mover::move(int index,const QString &fileName,MoveBlock::MoveDirection movD
         log.writeMessage("[Ошибка] перемещения файла "+sfullFileName+" в "+dfullFileName);
     }
 }
+
+// Перемещение файла
+/*
+void Mover::move(int index,const QString &fileName,MoveBlock::MoveDirection movDirect)
+{
+    QString sfullFileName,dfullFileName;
+    switch (movDirect)
+    {
+    case MoveBlock::ToRight:
+        sfullFileName=moveBlocks[index]->msourceDir+"/"+fileName;
+        dfullFileName=moveBlocks[index]->mdestDir+"/"+fileName;
+        break;
+    case MoveBlock::ToLeft:
+        sfullFileName=moveBlocks[index]->mdestDir+"/"+fileName;
+        dfullFileName=moveBlocks[index]->msourceDir+"/"+fileName;
+    }
+    QFile sourfile(sfullFileName);
+    if (!sourfile.exists()) return; // Файла нет
+    // Бэкап файла если включен
+    if (backupEnabled)
+    {
+        QString backDir=replDate(backupDir); // Заменяем дату
+
+        QDir dir(backDir);
+        if (!dir.exists()) dir.mkpath(backDir); // Создаем каталог если его нет
+        sourfile.copy(backDir+"/"+fileName);
+    }
+    // Перемещение файла
+    if (sourfile.rename(dfullFileName))
+    {
+        log.writeMessage("Перемещен файл "+sfullFileName+" в "+dfullFileName);
+    }
+    else
+    {
+        log.writeMessage("[Ошибка] перемещения файла "+sfullFileName+" в "+dfullFileName);
+    }
+}
+*/
 //! Заменяет %yymmdd% на текущую дату
 QString Mover::replDate(const QString &str)
 {

@@ -2,6 +2,7 @@
 #define MOVEDIR_H
 
 #include <QList>
+#include <QStringList>
 
 #include "movefile.h"
 
@@ -16,8 +17,11 @@ public:
     QString mDir;
     //! Маска файлов
     QString mMask;
-    //! Список файлов в каталоге
-    QList<MoveFile> mFiles;
+    //! Список имен файлов в каталоге
+    QStringList fileNames;
+
+    QStringList displayNames;
+    //QList<MoveFile> mFiles;
     //MoveFile mFiles;
     //! Перечитать содержимое директории
     void refresh ();
@@ -26,6 +30,10 @@ private:
     void refreshSum();
     //! Получить сумму файла
     QString GetSumFile(const QString &filename);
+    //! Преобразовать сумму в читаемый формат
+    QString GetDisplaySum(const QString &strSum);
+
+
 };
 
 #endif // MOVEDIR_H

@@ -26,7 +26,8 @@ public:
     //! Обновить информацию о содержимом каталогов
     void refresh();
     //! Переместить один файл
-    void move(int index,const QString &fileName,MoveBlock::MoveDirection movDirect=MoveBlock::ToRight);
+    //void move(int index,const QString &fileName,MoveBlock::MoveDirection movDirect=MoveBlock::ToRight);
+    void move(int indexBlock,int indexFile,MoveBlock::MoveDirection movDirect=MoveBlock::ToRight);
     //! Включено копирование перемещаемых файлов в бэкап
     bool backupEnabled;
     //! Каталог бэкапа
