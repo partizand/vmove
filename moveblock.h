@@ -34,6 +34,11 @@ public:
     QStringList destFiles;
     //! Перечитать содержимое директорий
     void refresh ();
+private:
+    //! Добавить к названиям файлов, сумму в скобках
+    void refreshSum();
+    //! Получить сумму файла
+    QString GetSumFile(const QString &filename);
 };
 
 #endif // MOVEBLOCK_H

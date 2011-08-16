@@ -4,12 +4,12 @@
 #
 #-------------------------------------------------
 
-QT       += core gui
+QT       += core gui xml
 
 TARGET = vmove
 TEMPLATE = app
 
-LIBS += -LC:/Qt/2010.05/qt/plugins/imageformats #libqgif4
+#LIBS += -LC:/Qt/2010.05/qt/plugins/imageformats #libqgif4
 
 SOURCES += main.cpp\
         mainwindow.cpp \
@@ -27,7 +27,7 @@ HEADERS  += mainwindow.h \
     testcl.h
 
 
-QTPLUGIN += libqgif4 #qgif
+#QTPLUGIN += libqgif4 #qgif
 
 
 FORMS    += mainwindow.ui

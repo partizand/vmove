@@ -2,8 +2,8 @@
 #include "mainwindow.h"
 
 #include <QTextCodec>
-#include <QtPlugin>
-Q_IMPORT_PLUGIN(qgif);
+//#include <QtPlugin>
+//Q_IMPORT_PLUGIN(qgif);
 
 int main(int argc, char *argv[])
 {
