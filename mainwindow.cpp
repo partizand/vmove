@@ -38,13 +38,13 @@ MainWindow::MainWindow(QWidget *parent) :
     for (i=0;i<mover.count;i++)
     {
 
-        butLayouts.append(new QVBoxLayout());
+        butLayouts.append(new QVBoxLayout(this));
         // Надпись
-        labels.append(new QLabel(mover.moveBlocks[i]->nameBlock));
+        labels.append(new QLabel(mover.moveBlocks[i]->nameBlock,this));
         // Левый список
-        leftLists.append(new QListWidget());
+        leftLists.append(new QListWidget(this));
         // Правый список
-        rightLists.append(new QListWidget());
+        rightLists.append(new QListWidget(this));
 
         // Кнопка ">"
         buttonsToRight.append(new MoveButton(i,">"));

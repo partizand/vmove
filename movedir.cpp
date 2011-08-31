@@ -61,7 +61,7 @@ QString MoveDir::GetSumFile(const QString &filename)
 
           }
       }
-
+    file.close();
   }
   return strSum;
 }
