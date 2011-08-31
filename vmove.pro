@@ -17,7 +17,6 @@ SOURCES += main.cpp\
     mover.cpp \
     moveblock.cpp \
     logging.cpp \
-    testcl.cpp \
     movedir.cpp \
     movefile.cpp
 
@@ -26,7 +25,6 @@ HEADERS  += mainwindow.h \
     mover.h \
     moveblock.h \
     logging.h \
-    testcl.h \
     movedir.h \
     movefile.h
 
