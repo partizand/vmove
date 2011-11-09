@@ -1,0 +1,22 @@
+Visual moving files
+
+*This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.*
+
+Утилита для наглядного перемещения файлов по каталогам, когда это необходимо делать в ручную.
+
+Работает на Windows 2000/XP/Vista/7. Установка не требуется.
+
+Распространяется по лицензии "GNU GPL3":http://www.gnu.org/licenses/gpl-3.0.html
+
+*ВАЖНО!!! ВЫ ИСПОЛЬЗУЕТЕ ДАННЫЙ ПРОГРАММНЫЙ ПРОДУКТ НА СВОЙ СТРАХ И РИСК!!! 
+Автор заранее слагает с себя ответственность за весь возможный ущерб, причиненный программой.*
+
+Подробрная справка в файле vmove.html
+
+Контакты 
+
+Вопросы, предложения, замечания принимаются по адресу <atsave@narod.ru>
+Сайт программы: <http://atsave.narod.ru>
